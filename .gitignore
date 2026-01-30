@@ -5,3 +5,4 @@ alembic/
 alembic/versions/
 
 venv/
+keys/*
