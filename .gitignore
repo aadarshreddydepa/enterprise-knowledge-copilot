@@ -6,7 +6,12 @@ alembic/versions/
 
 venv/
 # Ignore everything inside the keys folder
+backend/keys/*
 keys/*
 
 # Except for the .gitkeep file
+!backend/keys/.gitkeep
 !keys/.gitkeep
+
+# Additional security - ignore all .pem files
+**/*.pem
