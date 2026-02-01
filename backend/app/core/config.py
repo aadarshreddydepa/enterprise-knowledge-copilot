@@ -1,10 +1,19 @@
+from pydantic import BaseModel
 from dotenv import load_dotenv
 import os
 
-load_dotenv()  # <-- THIS is the missing piece
+load_dotenv()
 
-DATABASE_URL = os.getenv("DATABASE_URL")
-DATABASE_URL_SYNC = os.getenv("DATABASE_URL_SYNC")
 
-if not DATABASE_URL:
-    raise RuntimeError("DATABASE_URL is not set")
+class Settings(BaseModel):
+    DATABASE_URL: str
+    DATABASE_URL_SYNC: str
+    JWT_SECRET_KEY: str
+    JWT_ACCESS_TOKEN_EXPIRE_MINUTES: int = 30
+
+
+settings = Settings(
+    DATABASE_URL=os.getenv("DATABASE_URL"),
+    DATABASE_URL_SYNC=os.getenv("DATABASE_URL_SYNC"),
+    JWT_SECRET_KEY=os.getenv("JWT_SECRET_KEY"),
+)

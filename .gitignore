@@ -5,4 +5,8 @@ alembic/
 alembic/versions/
 
 venv/
+# Ignore everything inside the keys folder
 keys/*
+
+# Except for the .gitkeep file
+!keys/.gitkeep
